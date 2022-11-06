@@ -1,4 +1,5 @@
 import 'package:demo_app2/ApiServices/Postservice/vote_cast_api_service.dart';
+import 'package:demo_app2/UI/VoterInfo_Ui/signin.dart';
 import 'package:demo_app2/main.dart';
 import 'package:flutter/material.dart';
 
@@ -69,12 +70,14 @@ class _requestStatusState extends State<requestStatus> {
               splashColor: Color.fromARGB(255, 170, 0, 0),
               elevation: 5.0,
               child: Text('Ok'),
-              onPressed: () async {
+              onPressed: ()  {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => HomePage(),
-                    ));
+                    )
+                    );
+                
               },
             ),
           ],

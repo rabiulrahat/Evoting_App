@@ -26,5 +26,6 @@ class voter_get {
       // If that call was not successful (response was unexpected), it throw an error.
       throw Exception('Failed to load voter info');
     }
+    return null;
   }
 }

@@ -8,7 +8,7 @@ import 'package:demo_app2/UI/VoterInfo_Ui/signin.dart';
 import 'package:http/http.dart' as http;
 
 var baseUrl = "http://localhost:5669/add_vote?";
-var api = citeam +"&"+myps+"&"+digest;
+var api = citeam +"&"+pscod+"&"+digest;
 
 class vote_cast {
   Future<dynamic> post_data() async {

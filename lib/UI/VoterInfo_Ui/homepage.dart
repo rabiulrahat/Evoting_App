@@ -19,6 +19,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   late Future<VoterInfo?> voterCall;
+  
   @override
   void initState() {
     super.initState();

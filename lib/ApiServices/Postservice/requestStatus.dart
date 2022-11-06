@@ -1,5 +1,6 @@
 import 'package:demo_app2/ApiServices/Postservice/vote_cast_api_service.dart';
 import 'package:demo_app2/UI/Symbole_ui/ballotunit.dart';
+import 'package:demo_app2/UI/VoterInfo_Ui/signin.dart';
 import 'package:demo_app2/main.dart';
 import 'package:flutter/material.dart';
 
@@ -71,12 +72,13 @@ class _requestStatusState extends State<requestStatus> {
               elevation: 5.0,
               child: Text('Ok'),
               onPressed: () async {
-              
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => HomePage(),
                     ));
+                mynid = null;
+                myps = null;
               },
             ),
           ],

@@ -1,8 +1,8 @@
-import 'package:demo_app2/ApiServices/Getservice/genesis_api_service.dart';
 import 'package:demo_app2/UI/VoterInfo_Ui/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_app2/UI/VoterInfo_Ui/header.dart';
 
+var pscod;
 var mynid;
 var myps;
 
@@ -94,6 +94,7 @@ class SigninCard extends StatelessWidget {
                 onChanged: (text2) {
                   myps = text2;
                   // print('$myps');
+                  pscod = myps;
                 },
                 keyboardType: TextInputType.number,
                 autocorrect: false,
@@ -134,6 +135,7 @@ class SigninCard extends StatelessWidget {
                           builder: (context) => const Homepage(),
                         ),
                       );
+                  
                     },
                     child: Text("GET VOTER INFO",
                         style: TextStyle(
