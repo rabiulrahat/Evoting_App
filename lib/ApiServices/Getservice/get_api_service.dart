@@ -1,9 +1,6 @@
 import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:demo_app2/DataModels/Datamodel_get_api/datamodel_get_info.dart';
-import 'package:demo_app2/UI/VoterInfo_Ui/signin.dart';
 
 class voter_get {
   Future<VoterInfo?> getdata(var userid, var pscode) async {

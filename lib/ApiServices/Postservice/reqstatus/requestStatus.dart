@@ -4,6 +4,8 @@ import 'package:demo_app2/UI/VoterInfo_Ui/signin.dart';
 import 'package:demo_app2/main.dart';
 import 'package:flutter/material.dart';
 
+import '../../../UI/VoterInfo_Ui/homepage.dart';
+
 class requestStatus extends StatefulWidget {
   const requestStatus({super.key});
 
@@ -24,6 +26,13 @@ class _requestStatusState extends State<requestStatus> {
                 child: FutureBuilder<dynamic>(
                   future: vote_cast().post_data(),
                   builder: (context, snapshot) {
+                    d_igest = ' ';
+                    citeam = ' ';
+                    pscod = ' ';
+                    mynid = ' ';
+                    myps = ' ';
+                    D_igest = ' ';
+
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return CircularProgressIndicator();
                     } else if (snapshot.hasError) {
@@ -36,6 +45,8 @@ class _requestStatusState extends State<requestStatus> {
                       );
                     } else if (snapshot.hasData) {
                       final post = snapshot.data;
+                      d_igest = ' ';
+
                       return SizedBox(
                         child: Text(
                           post.toString(),
@@ -45,8 +56,10 @@ class _requestStatusState extends State<requestStatus> {
                         ),
                       );
                     } else {
+                      d_igest = ' ';
+
                       return Text(
-                        'Vote already done!Press the button 👇',
+                        'Unauthorize voter!Press the button 👇',
                         style: DefaultTextStyle.of(context)
                             .style
                             .apply(fontSizeFactor: 2.0),
@@ -72,13 +85,13 @@ class _requestStatusState extends State<requestStatus> {
               elevation: 5.0,
               child: Text('Ok'),
               onPressed: () async {
+                mynid = 0;
+                myps = 0;
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => HomePage(),
                     ));
-                mynid = null;
-                myps = null;
               },
             ),
           ],

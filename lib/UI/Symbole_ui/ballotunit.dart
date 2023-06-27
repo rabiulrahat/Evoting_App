@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../ApiServices/Getservice/get_candidate_service.dart';
 
 var citeam;
+
 class candidate extends StatefulWidget {
   candidate({Key? key}) : super(key: key);
   late Future<CandidateList?> candidateList;
@@ -21,6 +22,7 @@ class candidate extends StatefulWidget {
 class candidateState extends State<candidate> {
   @override
   late List candit;
+  late String selected = "-1";
   @override
   Widget build(BuildContext context) {
     // count of the list of image
@@ -31,16 +33,16 @@ class candidateState extends State<candidate> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          leading: Icon(Icons.image),
-          title: Text("Image List"),
+          leading: const Icon(Icons.image),
+          title: const Text("Candidate List"),
         ),
         body: Padding(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           // list view to show images and list count
           child: ListView(
             scrollDirection: Axis.vertical,
             children: [
-                            // showing list of images
+              // showing list of images
               FutureBuilder(
                 future: voter_get().getdata(),
                 builder: (context, snapshot) {
@@ -52,54 +54,86 @@ class candidateState extends State<candidate> {
                       child: Column(
                         children: [
                           for (String item in candit)
-                            Center(
-                                child: Container(
-                                    width: 400,
-                                    height: 400,
+                            SizedBox(
+                                width: 200,
+                                height: 200,
+                                child: Material(
+                                  child: InkWell(
+                                    onTap: () {
+                                      print(item);
+                                      setState(() {
+                                        selected = item;
+                                      });
+                                      print("tapped" + item.toString());
+                                      citeam = item;
+                                      color:
+                                      Colors.blueAccent;
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (context) =>
+                                      //             passvote()));
+                                    },
+                                    splashColor:selected == item.toString()? Color.fromARGB(255, 255, 0,
+                                         0):Color.fromARGB(255, 73, 255, 7), // Splash color over image
+                                    // S
+                                    //plash color over image
                                     child: Material(
-                                      child: InkWell(
-                                        onTap: ()  {
-                                          // print(item);
-                                          citeam = item;
-                                          Navigator.push(context,
-                                            MaterialPageRoute(builder: (context) => passvote()));
-
-                                        },
-                                        splashColor: Color.fromARGB(255, 255, 0,
-                                            0), // Splash color over image
-
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(2.0),
-                                          child: Image.asset(
-                                              fit: BoxFit.fitWidth,
-                                              'assets/images/$item.png',
-                                              width: 110.0,
-                                              height: 110.0),
+                                      color:selected == item.toString()? Color.fromARGB(255, 255, 117, 37):Colors.white,
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(2.0),
+                                        child: Card(
+                                          color: Color.fromARGB(255, 228, 201, 161),
+                                          child: SizedBox(
+                                            child: Image.asset(
+                                                fit: BoxFit.fitWidth,
+                                                'assets/images/$item.png',
+                                                width: 50.0,
+                                                height: 50.0),
+                                          ),
                                         ),
-
                                       ),
-
-                                    )
-
-
-                                    // child: InkWell(
-                                    //   onTap: () {},
-                                    //   child: Ink.image(
-                                    //     width: 110,
-                                    //     height: 110,
-                                    //   ),
-                                    // )
-                                    )),
+                                    ),
+                                  ),
+                                )),
+              Row(
+                mainAxisAlignment : MainAxisAlignment.end,
+                children: [
+                  MaterialButton(
+                                minWidth: double.minPositive,
+                                height: 60,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                // color: Colors.yellow,
+                                color: Color.fromARGB(255, 255, 30, 30),
+                                textColor: Color.fromARGB(255, 245, 241, 241),
+                                disabledColor: Colors.black12,
+                                disabledTextColor: Colors.black26,
+                                padding: const EdgeInsets.all(21.0),
+                                splashColor: Color.fromARGB(255, 170, 0, 0),
+                                elevation: 5.0,
+                                onPressed: () {
+                                Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      passvote()));
+                                },
+                                child: const Text(
+                                  "Press The button",
+                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                                ),
+                              ),
+                ],
+              ),
                         ],
                       ),
                     );
-                    // return Text(snapshot.data!.applicableCandidate[0]);
                   } else if (snapshot.hasError) {
                     return Text('${snapshot.error}');
                   }
-
-                  // By default, show a loading spinner.
                   return const CircularProgressIndicator();
                 },
               ),

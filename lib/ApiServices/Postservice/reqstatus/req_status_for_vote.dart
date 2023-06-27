@@ -1,5 +1,4 @@
 import 'package:demo_app2/ApiServices/Postservice/vote_cast_api_service.dart';
-import 'package:demo_app2/UI/VoterInfo_Ui/signin.dart';
 import 'package:demo_app2/main.dart';
 import 'package:flutter/material.dart';
 
@@ -19,40 +18,38 @@ class _requestStatusState extends State<requestStatus> {
           children: [
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Container(
-                child: FutureBuilder<dynamic>(
-                  future: vote_cast().post_data(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return CircularProgressIndicator();
-                    } else if (snapshot.hasError) {
-                      final error = snapshot.error;
-                      return Text(
-                        error.toString(),
+              child: FutureBuilder<dynamic>(
+                future: vote_cast().post_data(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    final error = snapshot.error;
+                    return Text(
+                      error.toString(),
+                      style: DefaultTextStyle.of(context)
+                          .style
+                          .apply(fontSizeFactor: 2.0),
+                    );
+                  } else if (snapshot.hasData) {
+                    final post = snapshot.data;
+                    return SizedBox(
+                      child: Text(
+                        post.toString(),
                         style: DefaultTextStyle.of(context)
                             .style
                             .apply(fontSizeFactor: 2.0),
-                      );
-                    } else if (snapshot.hasData) {
-                      final post = snapshot.data;
-                      return SizedBox(
-                        child: Text(
-                          post.toString(),
-                          style: DefaultTextStyle.of(context)
-                              .style
-                              .apply(fontSizeFactor: 2.0),
-                        ),
-                      );
-                    } else {
-                      return Text(
-                        'Vote already done!Press the button 👇',
-                        style: DefaultTextStyle.of(context)
-                            .style
-                            .apply(fontSizeFactor: 2.0),
-                      );
-                    }
-                  },
-                ),
+                      ),
+                    );
+                  } else {
+                    return Text(
+                      'Unauthorize voter!Press the button 👇',
+                      style: DefaultTextStyle.of(context)
+                          .style
+                          .apply(fontSizeFactor: 2.0),
+                    );
+                  }
+                },
               ),
             ),
             MaterialButton(
@@ -70,14 +67,12 @@ class _requestStatusState extends State<requestStatus> {
               splashColor: Color.fromARGB(255, 170, 0, 0),
               elevation: 5.0,
               child: Text('Ok'),
-              onPressed: ()  {
+              onPressed: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => HomePage(),
-                    )
-                    );
-                
+                    ));
               },
             ),
           ],

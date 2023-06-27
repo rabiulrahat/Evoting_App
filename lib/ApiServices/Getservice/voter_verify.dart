@@ -1,39 +1,26 @@
-import 'dart:convert';
-import 'dart:io' as Io;
 import 'dart:io';
-import 'package:demo_app2/UI/VoterInfo_Ui/genisisblock.dart';
-import 'package:demo_app2/main.dart';
 import 'package:http/http.dart' as http;
+import '../../UI/VoterInfo_Ui/homepage.dart';
 
-import '../../UI/VoterInfo_Ui/random_numgen.dart';
+var B_isVisible = false;
+var baseUrl_v = "http://localhost:5669/verify_a_voter?";
+ var api_v = "=" + "" + D_igest;
 
-var seed = getRandString(20);
-
-File file = File(filevalue);
-List<int> bytes = file.readAsBytesSync();
-String file64 = base64Encode(bytes);
-
-var baseUrl_g = "http://localhost:5669/generate_genesis?";
-var api_g = "seed=" + "jony"+ "&" + "pscode=" + mytext;
-
-class genesis_req {
+class Verify {
   Future<dynamic> get_data() async {
     try {
-      var request = http.MultipartRequest('POST', Uri.parse(baseUrl_g+api_g));
+      var request = http.MultipartRequest('GET', Uri.parse(baseUrl_v+api_v));
 
       http.StreamedResponse response = await request.send();
-
-      print(filevalue);
-      print('encoded URL: $file64');
-      // print('decoded file: $fi');
 
       if (response.statusCode == 200) {
         // print(await response.stream.bytesToString());
         var string = await response.stream.bytesToString();
-        print(string);
+        // print(string);
+        B_isVisible = true;
         return string;
       } else {
-        isVisible = true;
+        B_isVisible = false;
         print(response.reasonPhrase);
       }
     } on SocketException {

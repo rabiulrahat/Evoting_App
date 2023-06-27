@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:demo_app2/DataModels/Datamode_candidate.dart';
 
-class voter_get {
+import '../../DataModels/Datamodel_get_api/audit_vote_datamodel.dart';
+
+class voter_audit {
   Future<CandidateList?> getdata() async {
     var request = http.MultipartRequest(
-        'GET', Uri.parse('http://localhost:5669/get_candidate'));
+        'GET', Uri.parse('http://localhost:5669/audit_Vote'));
 
     http.StreamedResponse response = await request.send();
     var responsed = await http.Response.fromStream(response);

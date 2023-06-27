@@ -1,4 +1,8 @@
+import 'package:demo_app2/ApiServices/Getservice/get_candidate_service.dart';
+import 'package:demo_app2/ApiServices/Getservice/voter_verify.dart';
+import 'package:demo_app2/ApiServices/Postservice/reqstatus/voter_verify_status.dart';
 import 'package:demo_app2/UI/VoterInfo_Ui/homepage.dart';
+import 'package:demo_app2/main.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_app2/UI/VoterInfo_Ui/header.dart';
 
@@ -29,8 +33,8 @@ class SigninCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // constraints: BoxConstraints(maxWidth: 420, maxHeight: 420),
-      constraints: BoxConstraints(maxWidth: 620, maxHeight: 620),
-      decoration: BoxDecoration(
+      constraints: const BoxConstraints(maxWidth: 620, maxHeight: 620),
+      decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(16.0)),
           color: Color.fromARGB(255, 241, 74, 74)),
       // color: Color.fromARGB(255, 193, 255, 255)),
@@ -38,7 +42,7 @@ class SigninCard extends StatelessWidget {
       margin: EdgeInsetsDirectional.fromSTEB(32.0, 0.0, 32.0, 0.0),
       child: Column(
         children: <Widget>[
-          new Padding(
+          const Padding(
             padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
             child: Text("VOTER INFO",
                 textAlign: TextAlign.center,
@@ -49,7 +53,7 @@ class SigninCard extends StatelessWidget {
                   fontFamily: "Noto Sans Black",
                 )),
           ),
-          new Padding(
+          const Padding(
             padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
             child: Text("VOTER INFORMATION",
                 textAlign: TextAlign.center,
@@ -60,7 +64,7 @@ class SigninCard extends StatelessWidget {
                   fontFamily: "Noto Sans Black",
                 )),
           ),
-          new Padding(
+          Padding(
               padding: EdgeInsets.fromLTRB(32.0, 16.0, 32.0, 2.0),
               child: TextField(
                 textInputAction: TextInputAction.next,
@@ -116,8 +120,8 @@ class SigninCard extends StatelessWidget {
               child: ButtonTheme(
                 minWidth: 320,
                 child: MaterialButton(
-                    shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.only(
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(16.0),
                           bottomRight: Radius.circular(16.0)),
                     ),
@@ -135,7 +139,6 @@ class SigninCard extends StatelessWidget {
                           builder: (context) => const Homepage(),
                         ),
                       );
-                  
                     },
                     child: Text("GET VOTER INFO",
                         style: TextStyle(
