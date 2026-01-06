@@ -72,12 +72,13 @@ Follow these instructions to set up the project locally for development and test
 
 ```bash
 lib/
-├── main.dart             # Application entry point
-├── config/               # Routes and Themes
-├── core/                 # Constants, Utils, and API Helpers
-├── features/             # Feature-based modules
-│   ├── auth/             # Login and Registration screens
-│   ├── voting/           # Voting interface and logic
-│   └── results/          # Election results visualizations
-├── models/               # Data models (Candidate, Vote, User)
-└── widgets/              # Reusable UI components
+├── main.dart                # App entry point
+├── routes/                  # Route definitions and navigation
+├── services/                # API clients, HTTP handlers
+├── models/                  # Data models (User, Candidate, Vote, Result)
+├── screens/                 # UI screens
+│   ├── auth/                # Login, registration
+│   ├── voting/              # Candidate list, vote screen
+│   └── results/             # Result / statistics views
+└── widgets/                 # Reusable components
+
