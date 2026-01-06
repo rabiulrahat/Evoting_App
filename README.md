@@ -12,7 +12,7 @@ A secure, cross-platform mobile and web application for the **Hybrid Blockchain-
 
 ## 📱 Features
 
-- **Secure Authentication**: User login and verification system (e.g., OTP/QR) to ensure only eligible voters participate [memory:1].
+- **Secure Authentication**: User login and verification system to ensure only eligible voters participate.
 - **Candidate Dashboard**: View detailed profiles and manifestos of election candidates.
 - **Blockchain-Verified Voting**: Cast votes that are cryptographically secured and immutably recorded on the blockchain via the HBPEVS backend.
 - **Real-Time Results**: View live election status and final results directly within the app.
